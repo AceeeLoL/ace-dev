@@ -74,6 +74,36 @@
       rgba(4, 5, 8, 0.55) 100%
     );
   }
+
+  .progress-fill {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .progress-shimmer {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      100deg,
+      transparent 20%,
+      rgba(255, 244, 214, 0.35) 50%,
+      transparent 80%
+    );
+    animation: progress-shimmer 2.4s ease-in-out 2.2s infinite;
+    transform: translateX(-100%);
+  }
+
+  .progress-tip {
+    position: absolute;
+    top: 50%;
+    right: -2px;
+    width: 5px;
+    height: 5px;
+    border-radius: 9999px;
+    background: #eec27f;
+    box-shadow: 0 0 8px 2px rgba(211, 163, 71, 0.6);
+    animation: progress-tip-glow 2s ease-in-out infinite;
+  }
 }
 
 @keyframes caret-blink {
@@ -87,8 +117,30 @@
   }
 }
 
+@keyframes progress-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  60%,
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes progress-tip-glow {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .caret {
+  .caret,
+  .progress-shimmer,
+  .progress-tip {
     animation: none;
   }
 }

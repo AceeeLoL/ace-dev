@@ -12,11 +12,11 @@ const status = [
 
 const terminalLines: TerminalLine[] = [
   { kind: 'command', text: 'whoami' },
-  { kind: 'output', text: 'ace — 3rd year cs student, aspiring data engineer' },
+  { kind: 'output', text: 'Luigi Ace A. Losa — 3rd year Computer Science student, aspiring data engineer' },
   { kind: 'command', text: 'status' },
-  { kind: 'output', text: 'in progress', highlight: true },
+  { kind: 'output', text: 'working on the 3D blender scene', highlight: true },
   { kind: 'command', text: 'plan' },
-  { kind: 'output', text: 'new portfolio · cleaner writing · 3D scene in Blender' },
+  { kind: 'output', text: 'new portfolio · cleaner writing · build efficiently' },
 ]
 
 const stateDot: Record<(typeof status)[number]['state'], string> = {
@@ -85,7 +85,7 @@ function App() {
 
       <header className="relative z-10 border-b border-cozy-border/40">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-          <span className="font-mono text-sm uppercase tracking-[0.2em] text-cozy-text">ace</span>
+          <span className="font-mono text-sm uppercase tracking-[0.2em] text-cozy-text">ace.dev</span>
           <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-cozy-muted">
             v0.1
           </span>
@@ -139,7 +139,7 @@ function App() {
 
             <div className="mt-12 text-left">
               <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.2em] text-cozy-muted">
-                <span>rebuild</span>
+                <span>building</span>
                 <span>60%</span>
               </div>
               <div className="mt-2 h-1 w-full overflow-hidden rounded-full bg-cozy-border/60">
@@ -147,14 +147,17 @@ function App() {
                   initial={reduceMotion ? false : { width: 0 }}
                   animate={{ width: '60%' }}
                   transition={{ duration: 1.2, ease: 'easeOut', delay: 1 }}
-                  className="h-full rounded-full bg-cozy-hazard"
-                />
+                  className="progress-fill h-full rounded-full bg-cozy-hazard"
+                >
+                  <span className="progress-shimmer" aria-hidden="true"></span>
+                  <span className="progress-tip" aria-hidden="true"></span>
+                </motion.div>
               </div>
             </div>
           </motion.div>
 
           <motion.div variants={itemVariants} className="mt-12 text-left">
-            <Terminal title="~/rebuild.log" lines={terminalLines} />
+            <Terminal title="~/build.log" lines={terminalLines} />
             <ul className="mt-10">
               {status.map((entry) => (
                 <li
@@ -183,7 +186,7 @@ function App() {
             © 2026 · hand-built
           </p>
           <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-cozy-muted/70">
-            three.js on the way
+            Still in progress
           </p>
         </div>
       </footer>
