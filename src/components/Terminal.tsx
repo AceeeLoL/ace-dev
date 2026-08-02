@@ -96,6 +96,7 @@ export function Terminal({
       </div>
       <div className="px-4 py-4 font-mono text-sm leading-relaxed sm:px-5">
         {lines.map((line, i) => {
+          if (i > state.line) return null
           const isCurrent = i === state.line && !state.done
           const text = isCurrent ? line.text.slice(0, state.chars) : line.text
           const withCaret = isCurrent || (state.done && i === lines.length - 1)
