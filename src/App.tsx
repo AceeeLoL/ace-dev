@@ -142,7 +142,7 @@ function App() {
                 <span>building</span>
                 <span>60%</span>
               </div>
-              <div className="mt-2 h-1 w-full overflow-hidden rounded-full bg-cozy-border/60">
+              <div className="relative mt-2 h-1 w-full overflow-hidden rounded-full bg-cozy-border/60">
                 <motion.div
                   initial={reduceMotion ? false : { width: 0 }}
                   animate={{ width: '60%' }}
@@ -150,8 +150,8 @@ function App() {
                   className="progress-fill h-full rounded-full bg-cozy-hazard"
                 >
                   <span className="progress-shimmer" aria-hidden="true"></span>
-                  <span className="progress-tip" aria-hidden="true"></span>
                 </motion.div>
+                <span className="progress-tip" aria-hidden="true"></span>
               </div>
             </div>
           </motion.div>

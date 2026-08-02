@@ -85,9 +85,9 @@
     inset: 0;
     background: linear-gradient(
       100deg,
-      transparent 20%,
-      rgba(255, 244, 214, 0.35) 50%,
-      transparent 80%
+      transparent 30%,
+      rgba(255, 244, 214, 0.5) 50%,
+      transparent 70%
     );
     animation: progress-shimmer 2.4s ease-in-out 2.2s infinite;
     transform: translateX(-100%);
@@ -96,13 +96,17 @@
   .progress-tip {
     position: absolute;
     top: 50%;
-    right: -2px;
-    width: 5px;
-    height: 5px;
+    left: calc(60% - 2px);
+    width: 6px;
+    height: 6px;
     border-radius: 9999px;
-    background: #eec27f;
-    box-shadow: 0 0 8px 2px rgba(211, 163, 71, 0.6);
-    animation: progress-tip-glow 2s ease-in-out infinite;
+    transform: translateY(-50%);
+    background: #ffe9bd;
+    box-shadow: 0 0 12px 4px rgba(211, 163, 71, 0.65);
+    opacity: 0;
+    animation:
+      progress-tip-in 0.5s ease 2.2s both,
+      progress-tip-glow 2s ease-in-out 2.7s infinite;
   }
 }
 
@@ -127,10 +131,19 @@
   }
 }
 
+@keyframes progress-tip-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.7;
+  }
+}
+
 @keyframes progress-tip-glow {
   0%,
   100% {
-    opacity: 0.6;
+    opacity: 0.7;
   }
   50% {
     opacity: 1;
@@ -142,5 +155,9 @@
   .progress-shimmer,
   .progress-tip {
     animation: none;
+  }
+
+  .progress-tip {
+    opacity: 1;
   }
 }
